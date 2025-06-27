@@ -1,0 +1,225 @@
+/* ======== VARIABLES GLOBALES Y RESET ======== */
+:root {
+    --color-bg: #FDF6E3; /* Un blanco roto, como papel antiguo */
+    --color-text: #1a1a1a; /* Negro suave */
+    --color-accent: #E53935; /* Rojo-naranja potente */
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* ======== ESTILOS DE TIPOGRAFÍA ======== */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid var(--color-text);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+/* ======== SECCIÓN HERO ======== */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10%;
+    position: relative;
+    overflow: hidden;
+
+    /* Imagen de fondo con superposición oscura para legibilidad */
+    background-image: 
+        linear-gradient(rgba(26, 26, 26, 0.6), rgba(26, 26, 26, 0.6)),
+        url('saul.jpg'); /* Foto de Saul Bass */
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Para que el contenido esté sobre las formas */
+}
+
+.hero-content h1 {
+    font-size: 8rem;
+    line-height: 1;
+    color: var(--color-bg); /* Color claro para contrastar con el fondo oscuro */
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    color: var(--color-accent);
+    letter-spacing: 2px;
+}
+
+/* Estilos para el botón de contacto */
+.cta-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    border: 2px solid var(--color-accent);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--color-accent);
+}
+
+/* Formas decorativas al estilo Bass */
+.shape {
+    position: absolute;
+    background-color: var(--color-accent);
+    z-index: 1; /* Entre el fondo y el contenido */
+}
+
+.shape-1 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    bottom: 10%;
+    right: 5%;
+    opacity: 0.6;
+}
+
+.shape-2 {
+    width: 100%;
+    height: 15px;
+    bottom: 25%;
+    left: -20%;
+    transform: rotate(-10deg);
+    opacity: 0.8;
+}
+
+/* ======== SECCIÓN TÍTULOS ======== */
+#titulos ul {
+    list-style: none;
+    padding-left: 2rem;
+}
+
+#titulos li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+#titulos li::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-accent);
+}
+
+/* ======== SECCIÓN PROYECTOS ======== */
+.project-card {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.project-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.project-image {
+    flex: 1;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease-in-out;
+}
+
+.project-image img:hover {
+    transform: scale(1.05);
+}
+
+.project-info {
+    flex: 1;
+}
+
+/* ======== FOOTER ======== */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+
+/* ======== DISEÑO RESPONSIVO ======== */
+@media (max-width: 768px) {
+    .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+
+    /* Los proyectos se apilan en pantallas pequeñas */
+    .project-card, .project-card.reverse {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .project-info {
+        text-align: left;
+    }
+}
